@@ -3,29 +3,33 @@ package com.task.customer.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
 	@Id
 	@GeneratedValue
 	private int id;
-//	private Name name;
+	@OneToOne
+	private Name name;
 	private String title;
-	//private MailingAddress mailingAddress;
+	@OneToOne
+	private MailingAddress mailingAddress;
 	private String sex;
 	private String maritalStatus;
 	private int creditRating;
 	private String isNabCustomer;
+
 	public Customer(){
 
 	}
 
-	public Customer(int id,  String title,  String sex, String maritalStatus,
+	public Customer(int id, Name name, String title, MailingAddress mailingAddress, String sex, String maritalStatus,
 			int creditRating, String isNabCustomer) {
 		this.id = id;
-		//this.name = name;
+		this.name = name;
 		this.title = title;
-		//this.mailingAddress = mailingAddress;
+		this.mailingAddress = mailingAddress;
 		this.sex = sex;
 		this.maritalStatus = maritalStatus;
 		this.creditRating = creditRating;
@@ -40,7 +44,21 @@ public class Customer {
 		this.id = id;
 	}
 
+	public Name getName() {
+		return name;
+	}
 
+	public void setName(Name name) {
+		this.name = name;
+	}
+
+	public MailingAddress getMailingAddress() {
+		return mailingAddress;
+	}
+
+	public void setMailingAddress(MailingAddress mailingAddress) {
+		this.mailingAddress = mailingAddress;
+	}
 
 	public String getTitle() {
 		return title;

@@ -2,6 +2,7 @@ package com.task.customer.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class MailingAddress {
@@ -15,13 +16,15 @@ public class MailingAddress {
 	private String state;
 	private String country;
 	private String pincode;
+	@OneToOne(mappedBy = "mailingAddress")
+	private Customer customer;
 
 	public MailingAddress() {
 
 	}
 
 	public MailingAddress(int adderss_id, String houseType, String houseTypeName, String streetName, String suburb,
-			String city, String state, String country, String pincode) {
+			String city, String state, String country, String pincode,Customer customer) {
 		this.adderss_id = adderss_id;
 		this.houseType = houseType;
 		this.houseTypeName = houseTypeName;
@@ -31,6 +34,7 @@ public class MailingAddress {
 		this.state = state;
 		this.country = country;
 		this.pincode = pincode;
+		this.customer=customer;
 	}
 
 	public int getAdderss_id() {
@@ -103,5 +107,13 @@ public class MailingAddress {
 
 	public void setPincode(String pincode) {
 		this.pincode = pincode;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
 	}
 }
