@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class CustomerController {
+	
 	@RequestMapping("/customer")
-	public String home(){
+	public String homePage(){
 		return "customer.jsp";
 	}
-
 }
